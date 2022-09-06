@@ -1,1 +1,15 @@
+sudo nmap -sV -sC 192.168.220.194
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.10 ((Debian))
+|_http-title: Did not follow redirect to http://dc-2/
+|_http-server-header: Apache/2.4.10 (Debian)
+
+
+sudo nano /etc/hosts
+
+192.168.220.194   dc-2
+
+
+
 
