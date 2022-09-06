@@ -14,4 +14,19 @@ PORT   STATE SERVICE VERSION
 |_http-server-header: Apache/2.4.41 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux
 
+sudo nano /etc/hosts    
+
+192.168.220.163  exfiltrated.offsec
+
+
+http://exfiltrated.offsec/robots.txt
+
+User-agent: *
+Disallow: /backup/
+Disallow: /cron/?
+Disallow: /front/
+Disallow: /install/
+Disallow: /panel/
+Disallow: /tmp/
+Disallow: /updates/
 
