@@ -1,1 +1,1 @@
-sudo nmap -sV -sC -p- 192.168.220.200
+sudo nmap -sV -sC -Pn  -p-  192.168.220.200
